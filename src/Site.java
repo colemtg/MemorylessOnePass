@@ -5,11 +5,21 @@ public class Site {
     private final boolean specialChar;
     private final boolean number;
     private final boolean capital;
+    private final int defaultMinLength = 6;
+    private final int getDefaultMaxLength = 8;
 
     public Site(String name, int minLength, int maxLength, boolean specialChar, boolean number, boolean capital) {
         this.name = name;
-        this.minLength = minLength;
-        this.maxLength = maxLength;
+        if(minLength>maxLength || minLength<defaultMinLength)
+        {
+            this.minLength=defaultMinLength;
+            this.maxLength=getDefaultMaxLength;
+        }
+        else
+        {
+            this.minLength = minLength;
+            this.maxLength = maxLength;
+        }
         this.specialChar = specialChar;
         this.number = number;
         this.capital = capital;
